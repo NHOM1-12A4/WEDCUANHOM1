@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lớp học 12A4 thân yêu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#ff6ec4,#7873f5,#42e695,#ff9a9e);
+    background-size:400% 400%;
+    animation:gradientMove 8s ease infinite;
+}
+
+/* NỀN CHUYỂN ĐỘNG */
+    @keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* HIỆU ỨNG XUẤT HIỆN */
+.fade-in{
+    opacity:0;
+    transform:translateY(30px);
+    animation:fadeUp 1.5s forwards;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h1{
+    font-size:65px;
+    font-weight:800;
+    text-shadow:0 5px 20px rgba(0,0,0,0.4);
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff;}
+    to{text-shadow:0 0 25px #fff,0 0 40px #ff9a9e;}
+}
+
+.note{
+    margin-top:15px;
+    font-size:22px;
+    opacity:0.95;
+}
+
+/* LINK BOX */
+.links{
+    margin-top:60px;
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.links a{
+    text-decoration:none;
+    padding:18px 40px;
+    border-radius:50px;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(10px);
+    color:white;
+    font-weight:600;
+    transition:0.4s;
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+}
+
+.links a:hover{
+    transform:translateY(-8px) scale(1.05);
+    background:white;
+    color:#ff4e9b;
+}
+
+/* LINK TỔNG KẾT */
+.summary{
+    margin-top:40px;
+}
+
+.summary a{
+    text-decoration:none;
+    font-size:20px;
+    color:white;
+    border-bottom:2px solid white;
+    padding-bottom:5px;
+    transition:0.3s;
+}
+
+.summary a:hover{
+    color:#ffe4f0;
+    border-color:#ffe4f0;
+}
+
+/* CHỮ CHẠY */
+.marquee{
+    position:absolute;
+    bottom:20px;
+    width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+}
+
+.marquee span{
+    display:inline-block;
+    padding-left:100%;
+    animation:marquee 10s linear infinite;
+    font-size:22px;
+    font-weight:600;
+}
+
+@keyframes marquee{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+}
+
+/* TRÁI TIM BAY */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    color:#fff;
+    font-size:20px;
+    animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0) scale(1);}
+    100%{transform:translateY(-110vh) scale(1.5);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1 class="fade-in">Lớp học 12A4 thân yêu</h1>
+<p class="note fade-in" style="animation-delay:0.5s;">
+Ba năm gắn bó – Một đại gia đình – Vạn khoảnh khắc yêu thương
+</p>
+
+<div class="links fade-in" style="animation-delay:1s;">
+    <a href="10a4.html">🌸 10A4</a>
+    <a href="11a4.html">✨ 11A4</a>
+    <a href="12a4.html">🎓 12A4</a>
+</div>
+
+<div class="summary fade-in" style="animation-delay:1.5s;">
+    <a href="tongket.html">💌Tổng Kết Kỷ Niệm</a>
+</div>
+
+<div class="marquee">
+    <span>💖 Lớp học 12A4 thân yêu của chúng tôi 💖</span>
+</div>
+
+<script>
+/* TẠO TRÁI TIM BAY */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+
+setInterval(createHeart,500);
+</script>
+
+</body>
+</html>

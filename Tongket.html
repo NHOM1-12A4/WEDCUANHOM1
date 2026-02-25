@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỷ Niệm Lớp 12A4</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{  
+    font-family:'Poppins',sans-serif;  
+    background:linear-gradient(
+        135deg,
+        rgb(255,240,245),
+        #f8a5c2,
+        #f48fb1,
+        rgb(255,240,245)
+    );
+    background-attachment:fixed;
+    color:#FFF0F5;
+}
+
+/* KHUNG CHUNG */
+.section{
+    padding:80px 10%;
+    text-align:center;
+}
+
+/* TIÊU ĐỀ */
+.section h2{
+    font-size:40px;
+    margin-bottom:40px;
+    letter-spacing:2px;
+}
+
+/* VIDEO */
+video{
+    width:80%;
+    max-width:700px;
+    border-radius:20px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* AUDIO */
+audio{
+    width:60%;
+    margin-top:20px;
+}
+
+/* LƯU BÚT */
+.memory-box{
+    max-width:800px;
+    margin:auto;
+    padding:60px 50px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    box-shadow:0 25px 60px rgba(0,0,0,0.5);
+    position:relative;
+    line-height:1.9;
+    font-size:19px;
+    font-style:italic;
+    transition:.4s;
+    border:2px solid rgba(255,255,255,0.3);
+}
+
+.memory-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 35px 70px rgba(0,0,0,0.6);
+}
+
+/* Trang trí hoa góc trên */
+.memory-box::before{
+    content:"🌸";
+    position:absolute;
+    top:-20px;
+    left:-20px;
+    font-size:40px;
+}
+
+/* Trang trí góc dưới */
+.memory-box::after{
+    content:"✨";
+    position:absolute;
+    bottom:-20px;
+    right:-20px;
+    font-size:35px;
+}
+
+/* Tiêu đề bên trong */
+.memory-title{
+    font-size:28px;
+    margin-bottom:25px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+/* 4 TRÁI TIM */
+.heart-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.heart{
+ width:150px;
+    height:150px;
+    background:#ff4d6d;
+    position:relative;
+    transform:rotate(-45deg);
+    margin:40px 10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    transition:.4s;
+}
+
+.heart:before,
+.heart:after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:#ff4d6d;
+    border-radius:50%;
+}
+
+.heart:before{
+    top:-75px;
+    left:0;
+}
+
+.heart:after{
+    left:75px;
+    top:0;
+}
+
+
+.heart span{
+    transform:rotate(45deg);
+    position:relative;
+    z-index:2;
+}
+
+.heart:hover{
+    transform:rotate(-45deg) scale(1.1);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    video{
+        width:100%;
+    }
+    .heart{
+        width:120px;
+        height:120px;
+    }
+}
+
+/* ===== HEART FALL EFFECT ===== */
+.falling-heart{
+    position:fixed;
+    top:-20px;
+    color:#ff2e63;
+    font-size:20px;
+    animation:fall linear forwards;
+    z-index:9999;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(100vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ===== LƯU BÚT NÂNG CẤP ===== */
+.memory-box p{
+    margin-bottom:20px;
+}
+
+.signature{
+    margin-top:30px;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:2px;
+    opacity:0.9;
+}
+
+/* ===== TRÁI TIM NÂNG CẤP ===== */
+.heart{
+    width:180px;
+    height:180px;
+    font-size:18px;
+    background:#ff3e6c;
+}
+
+.heart:before,
+.heart:after{
+    width:180px;
+    height:180px;
+    background:#ff3e6c;
+}
+
+.heart span{
+    font-size:18px;
+    font-weight:600;
+    color:white;
+}
+
+/* ===== NÚT TRẮNG HIỆU ỨNG BÓNG ===== */
+
+.white-btn-wrapper{
+    margin-top:50px;
+    text-align:center;
+}
+
+.white-btn{
+    display:inline-block;
+    padding:18px 40px;
+    background:white;
+    color:#ff4d6d;
+    font-size:18px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Hover nổi lên */
+.white-btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.35);
+    background:#fff5f8;
+}
+
+/* ===== FOOTER STYLE ===== */
+
+.footer{
+    margin-top:80px;
+    padding:50px 20px;
+    background:linear-gradient(135deg,#ff9eb5,#ff4d6d);
+    color:white;
+    text-align:center;
+    box-shadow:0 -10px 40px rgba(0,0,0,0.3);
+}
+
+.footer-content h3{
+    font-size:28px;
+    margin-bottom:15px;
+    letter-spacing:2px;
+}
+
+.footer-text{
+    font-size:16px;
+    margin-bottom:25px;
+    opacity:0.9;
+}
+
+.footer-links{
+    margin-bottom:25px;
+}
+
+.footer-links a{
+    text-decoration:none;
+    color:white;
+    margin:0 15px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#fff0f5;
+    text-shadow:0 0 10px rgba(255,255,255,0.8);
+}
+
+.copyright{
+    font-size:14px;
+    opacity:0.8;
+}
+
+/* ===== HEADER TỔNG KẾT ===== */
+
+.page-header{
+    height:60vh;
+    background:linear-gradient(135deg,#ff9eb5,#ff4d6d,#ff9eb5);
+    background-size:300% 300%;
+    animation:headerMove 8s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+@keyframes headerMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.header-overlay{
+    animation:fadeHeader 1.5s ease forwards;
+    opacity:0;
+    transform:translateY(30px);
+}
+
+@keyframes fadeHeader{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.header-title{
+    font-size:55px;
+    font-weight:800;
+    letter-spacing:3px;
+    text-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.header-sub{
+    margin-top:15px;
+    font-size:20px;
+    opacity:0.95;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER TỔNG KẾT ===== -->
+<header class="page-header">
+    <div class="header-overlay">
+        <h1 class="header-title">Tổng Kết Kỉ Niệm</h1>
+        <p class="header-sub">Hành trình thanh xuân của 12A4 💖</p>
+    </div>
+</header>
+
+<!-- PHẦN 1 VIDEO -->
+<section class="section">
+    <h2>🎬 Video Kỷ Niệm</h2>
+    <video controls>
+        <source src="kiniem.mp4" type="video/mp4">
+        Trình duyệt không hỗ trợ video.
+    </video>
+</section>
+
+<!-- PHẦN 2 AUDIO -->
+<section class="section">
+    <h2>🎵 Giai Điệu Thanh Xuân</h2>
+    <audio controls>
+        <source src="dailomattroi.mp3" type="audio/mpeg">
+        Trình duyệt không hỗ trợ audio.
+    </audio>
+</section>
+
+<!-- PHẦN 3 LƯU BÚT -->
+<section class="section">
+    <h2>📖 Lưu Bút</h2>
+
+    <div class="memory-box">
+        <div class="memory-title">Thanh Xuân Của Chúng Ta ✨</div>
+        <p>
+        Tháng năm ấy, chúng ta bước vào lớp với những ánh mắt còn xa lạ.
+        Không ai biết rằng ba năm sau, điều khiến ta rưng rưng lại chính là
+        hai chữ <b>12A4</b>.
+        </p>
+        <p>
+        Chúng ta đã cùng nhau đi qua những buổi học dài,
+        những lần kiểm tra đầy lo lắng,
+        những trận cười nghiêng ngả,
+        và cả những khoảnh khắc chỉ cần nhìn nhau cũng hiểu.
+        </p>
+        <p>
+        Rồi một ngày, tiếng trống trường vang lên lần cuối.
+        Có thể sau này mỗi người một con đường,
+        nhưng mong rằng ở một góc ký ức,
+        12A4 vẫn luôn là nơi trái tim ta thuộc về. 💙
+        </p>
+
+        <div class="signature">— Tập thể 12A4 —</div>
+    </div>
+</section>
+
+<!-- PHẦN 4 LỜI NHẮN -->
+<section class="section">
+    <h2>💌 Lời Nhắn Gửi</h2>
+    <div class="heart-container">
+        <div class="heart"><span>Mãi nhớ 12A4 💙</span></div>
+        <div class="heart"><span>Cảm ơn vì đã là thanh xuân của nhau 🌸</span></div>
+        <div class="heart"><span>Dù mai này xa, tim vẫn chung một nhịp ✨</span></div>
+        <div class="heart"><span>Hẹn gặp lại ở một ngày rực rỡ hơn 🎓</span></div>
+    </div>
+</section>
+
+<!-- ===== FOOTER 12A4 ===== -->
+<footer class="footer">
+    <div class="footer-content">
+
+        <h3>💖 Lớp 12A4 Thân Yêu 💖</h3>
+
+        <p class="footer-text">
+           Ba năm gắn bó – Một đại gia đình – Vạn khoảnh khắc yêu thương
+        </p>
+
+        <div class="footer-links">
+            <a href="12A4 thân yêu của chúng tôi.html">🏠 Trang Chính</a>
+            <a href="10a4.html">🌸 10A4</a>
+            <a href="11a4.html">✨ 11A4</a>
+            <a href="12a4.html">🎓 12A4</a>
+        </div>
+
+        <p class="copyright">
+            Tập thể 12A4 | Thanh Xuân Rực Rỡ
+        </p>
+
+    </div>
+</footer>
+
+<script>
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("falling-heart");
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+// Khi vừa vào web
+window.onload = function(){
+    for(let i = 0; i < 25; i++){
+        setTimeout(createHeart, i * 150);
+    }
+};
+</script>
+
+</body>
+</html>

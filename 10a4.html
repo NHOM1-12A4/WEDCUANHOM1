@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 10A4 - Chuyến Tàu Khởi Hành</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap"rel="stylesheet">
+<style>
+:root{
+    --main-color:#9b59b6;
+    --gradient:linear-gradient(135deg,#8e44ad,#c39bd3);
+    --dark:#111;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f4f8;
+    color:#333;
+    scroll-behavior:smooth;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    padding:18px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.3);
+    transition:.4s;
+    z-index:1000;
+}
+
+nav.scrolled{
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:25px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav.scrolled a{color:#333;}
+
+nav a:hover{color:var(--main-color);}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url("10a4.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:70px;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:22px;
+    opacity:.9;
+}
+
+/* SECTION */
+section{
+    padding:100px 10%;
+}
+/* KHUNG TIÊU ĐỀ HOẠT ĐỘNG */
+.section-header-box{
+    max-width:800px;
+    margin:0 auto 60px auto;
+    padding:25px 40px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#ffffff,#f3e8ff);
+    box-shadow:
+        0 20px 50px rgba(155,89,182,0.25),
+        inset 0 0 0 3px #c084fc;
+    text-align:center;
+    position:relative;
+}
+
+.section-header-box h2{
+    font-size:40px;
+    font-family:'Playfair Display',serif;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.section-header-box::before{
+    content:"✨";
+    position:absolute;
+    left:20px;
+    top:20px;
+    font-size:22px;
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+    text-align:center;
+    margin-bottom:60px;
+}
+
+/* TIMELINE */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline::after{
+    content:'';
+    position:absolute;
+    width:4px;
+    background:var(--gradient);
+    top:0;
+    bottom:0;
+    left:50%;
+    margin-left:-2px;
+}
+
+.container{
+    padding:20px 40px;
+    position:relative;
+    width:50%;
+}
+
+.container::before{
+    content:'';
+    position:absolute;
+    width:20px;
+    height:20px;
+    right:-10px;
+    background:var(--main-color);
+    border-radius:50%;
+    top:30px;
+}
+
+.container.right::before{
+    left:-10px;
+}
+
+.container.left{left:0}
+.container.right{left:50%}
+
+.content{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    transition:.4s;
+}
+
+.content:hover{
+    transform:translateY(-5px);
+}
+
+/* CARD BOX */
+.card-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.gallery img, video{
+    width:100%;
+    border-radius:15px;
+    transition:.4s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.gallery img:hover, video:hover{
+    transform:scale(1.03);
+}
+
+/* QUOTE */
+.quote{
+    background:var(--gradient);
+    color:white;
+    padding:70px;
+    border-radius:20px;
+    text-align:center;
+    font-size:22px;
+    margin-top:80px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:30px;
+    letter-spacing:2px;
+}
+
+/* FADE */
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+    .hero h1{font-size:40px}
+    .timeline::after{left:20px}
+    .container{width:100%;padding-left:60px}
+    .container.right{left:0}
+}
+/* SPLIT LAYOUT */
+.split-layout{
+    display:flex;
+    gap:50px;
+    align-items: stretch; /*QUAN TRỌNG*/
+    max-width:1100px;
+    margin:auto;
+}
+.left-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.right-content{
+    flex:1;
+    display:flex;
+}
+
+.right-content video{
+    width:100%;
+    height:100%;   /* QUAN TRỌNG */
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* BOX */
+.box {
+  background: #ffffff;
+  border-radius: 23px;
+  padding: 30px;
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.12),
+    inset 0 0 0 2px #e5e7eb;
+}
+
+/* TEXT BOX */
+.text h2 {
+  margin-top: 0;
+  color: #0f172a;
+  position: relative;
+}
+.text h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #fcbf49;
+  display: block;
+  margin-top: 8px;
+}
+
+/* BOX NỔI BẬT */
+.text.highlight {
+  background: linear-gradient(135deg, #fff7e6, #fffbeb);
+  box-shadow:
+    0 20px 40px rgba(252,191,73,0.35),
+    inset 0 0 0 3px #fcbf49;
+}
+
+.text.accent {
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  box-shadow:
+    0 20px 40px rgba(56,189,248,0.35),
+    inset 0 0 0 3px #38bdf8;
+}
+
+/* ===== NÚT TRẮNG HIỆU ỨNG BÓNG ===== */
+
+.white-btn-wrapper{
+    margin-top:50px;
+    text-align:center;
+}
+
+.white-btn{
+    display:inline-block;
+    padding:18px 40px;
+    background:white;
+    color:#ff4d6d;
+    font-size:18px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Hover nổi lên */
+.white-btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.35);
+    background:#fff5f8;
+}
+
+</style>
+</head>
+<body>
+<nav id="navbar">
+<div style="color:white;font-weight:800">10A4</div>
+<div>
+<a href="#cot1">Ngày đầu gặp nhau</a>
+<a href="#cot2">Hoạt động đầu tiên</a>
+<a href="#cot3">Lần đầu chung bí mật</a>
+<a href="#cot4">Hội trại 26/3</a>
+</div>
+</nav>
+<div class="hero">
+<div>
+<h1>Chuyến Tàu Khởi Hành 10A4</h1>
+<p>Cột mốc của sự bắt đầu</p>
+</div>
+</div>
+
+<section id="cot1">
+<h2 class="section-header-box">Ngày đầu gặp nhau</h2>
+<div class="timeline fade">
+<div class="container left">
+<div class="content">
+<p>Tháng 9 năm ấy, chúng tôi bước vào lớp với ánh mắt xa lạ.
+<br>Chưa ai biết ba năm sau mình sẽ khóc vì nhau.</br>Những buổi học đầu tiên còn im lặng, những cái nhìn còn dè dặt.<br> Nhưng rồi từng câu chuyện nhỏ đã nối chúng tôi lại gần hơn.<br></p>
+</div>
+</div>
+<div class="container right">
+<div class="content">
+<img src="ngaydautiengap.jpg"width="330" height="300">
+</div>
+</div>
+</div>
+</section>
+
+<section id="cot2">
+<h2 class="section-title fade">🌟 Hoạt động đầu tiên cùng nhau 🌟</h2>
+<div class="split-layout fade">
+    <!-- BÊN TRÁI -->
+    <div class="left-content">
+
+        <div class="box text highlight">
+            <h3>Giới thiệu</h3>
+            <p>
+                Hoạt Động Ngoại Khoá - Hoạt động đầu tiên chúng em cùng nhau
+                cố gắng tạo ra những bộ trang phục tái chế bằng giấy báo
+                cùng nhau ghép đội lên sân khấu biểu diễn
+            </p>
+        </div>
+
+        <div class="card-box">
+            <h3>Ý nghĩa</h3>
+            <p>
+                Dù chưa phải lớp nổi bật nhất, nhưng là lớp đoàn kết nhất.
+                Cùng nhau tập nhảy đến mệt, cùng cổ vũ khản giọng,
+                cùng cười vì những sai sót đáng yêu
+            </p>
+        </div>
+    </div>
+    <!-- BÊN PHẢI -->
+    <div class="right-content">
+        <video controls>
+            <source src="hdnk10a4.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+</div>
+</section>
+
+<section id="cot3">
+<h2 class="section-header-box">Lần đầu cả lớp chung một bí mật</h2>
+<div class="timeline fade">
+<div class="container left">
+<div class="content">
+<h3>Lần đầu tiên cùng nhau tổ chức sinh nhật cho GVCN</h3>
+<p>Âm thầm chuẩn bị bánh, trang trí bảng, phân công người “đánh lạc hướng”.
+<br>Khi cô bước vào lớp và cả lớp đồng thanh hát chúc mừng, nụ cười bất ngờ của cô khiến chúng tôi vui hơn cả lúc nhận quà.</br>Chiếc bánh nhỏ, bó hoa giản dị, nhưng là cả tấm lòng của cả lớp dành cho người đã luôn đồng hành suốt ba năm thanh xuân. 💙</p>
+</div>
+</div>
+<div class="container right">
+<div class="content">
+    <img src="cn10a4.jpg"width="300" height="300">
+</div>
+</div>
+</div>
+</section>
+
+<section id="cot4">
+<h2 class="section-title fade">🎉Hội trại 26/3 đầu tiên cùng nhau🎉</h2>
+<div class="split-layout fade">
+    <!-- BÊN TRÁI -->
+    <div class="left-content">
+        <div class="box text highlight">
+           <h3> Hoạt động</h3>
+        <p>Từ tập văn nghệ, tham gia trò chơi đến cổ vũ cho nhau, mọi thứ đều mới mẻ và đáng nhớ.<br>Dựng trại giữa nắng, thức đêm hoàn thiện khẩu hiệu, cùng nhau chiến đấu trong từng trò chơi. Khi lớp được xướng tên, cảm giác tự hào ấy đến giờ vẫn còn nguyên vẹn.
+        </p>
+        </div>
+        <div class="card-box">
+            <h3>Ý nghĩa</h3> 
+        <p>Dưới sân trường hôm ấy, tiếng cười vang lên nhiều hơn cả sự ngại ngùng ban đầu.<br>Chính hoạt động 26/3 đầu tiên ấy đã khiến 10A4 thật sự trở thành một tập thể – không còn là những cá nhân rời rạc, mà là một lớp học biết đồng lòng và sát cánh bên nhau. </p>
+        </div>
+       <div class="image-box">
+        <img src="hd26th3lop10.jpg"width="450" height="300">
+        </div>
+    </div>
+    <!-- BÊN PHẢI -->
+    <div class="right-content">
+        <video controls>
+            <source src="hd26th3lop10.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+</div>
+</section>
+
+<div class="white-btn-wrapper">
+    <a href="12A4 thân yêu của chúng tôi.html" class="white-btn">
+        🌸 Lớp học 12A4 Thân Yêu 🌸
+    </a>
+</div>
+
+<div class="quote fade">
+"Lớp 10 – năm của những điều “đầu tiên”, của sự làm quen và bắt đầu yêu thương."
+</div>
+<footer>
+<p class="footer-text">Ba năm gắn bó – Một đại gia đình – Vạn khoảnh khắc yêu thương</p>
+</footer>
+
+<div id="lightbox" onclick="this.style.display='none'">
+<img src="">
+</div>
+<script>
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+const faders=document.querySelectorAll(".fade");
+window.addEventListener("scroll",()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add("show");
+}
+});
+});
+const images=document.querySelectorAll(".gallery img");
+const lightbox=document.getElementById("lightbox");
+const lightImg=lightbox.querySelector("img");
+images.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.style.display="flex";
+lightImg.src=img.src;
+});
+});
+</script>
+</body>
+</html>

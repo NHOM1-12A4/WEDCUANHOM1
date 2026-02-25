@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12A4 – Hành Trình Khép Lại</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap"rel="stylesheet">
+<style>
+:root{
+    --main-color:#9b59b6;
+    --gradient:linear-gradient(135deg,#8e44ad,#c39bd3);
+    --dark:#111;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f4f8;
+    color:#333;
+    scroll-behavior:smooth;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    padding:18px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.3);
+    transition:.4s;
+    z-index:1000;
+}
+
+nav.scrolled{
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:25px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav.scrolled a{color:#333;}
+
+nav a:hover{color:var(--main-color);}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url("tongketlop11.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:70px;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:22px;
+    opacity:.9;
+}
+
+/* SECTION */
+section{
+    padding:100px 10%;
+}
+/* KHUNG TIÊU ĐỀ HOẠT ĐỘNG */
+.section-header-box{
+    max-width:800px;
+    margin:0 auto 60px auto;
+    padding:25px 40px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#ffffff,#f3e8ff);
+    box-shadow:
+        0 20px 50px rgba(155,89,182,0.25),
+        inset 0 0 0 3px #c084fc;
+    text-align:center;
+    position:relative;
+}
+
+.section-header-box h2{
+    font-size:40px;
+    font-family:'Playfair Display',serif;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.section-header-box::before{
+    content:"✨";
+    position:absolute;
+    left:20px;
+    top:20px;
+    font-size:22px;
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+    text-align:center;
+    margin-bottom:60px;
+}
+
+/* TIMELINE */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline::after{
+    content:'';
+    position:absolute;
+    width:4px;
+    background:var(--gradient);
+    top:0;
+    bottom:0;
+    left:50%;
+    margin-left:-2px;
+}
+
+.container{
+    padding:20px 40px;
+    position:relative;
+    width:50%;
+}
+
+.container::before{
+    content:'';
+    position:absolute;
+    width:20px;
+    height:20px;
+    right:-10px;
+    background:var(--main-color);
+    border-radius:50%;
+    top:30px;
+}
+
+.container.right::before{
+    left:-10px;
+}
+
+.container.left{left:0}
+.container.right{left:50%}
+
+.content{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    transition:.4s;
+}
+
+.content:hover{
+    transform:translateY(-5px);
+}
+
+/* CARD BOX */
+.card-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.gallery img, video{
+    width:100%;
+    border-radius:15px;
+    transition:.4s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.gallery img:hover, video:hover{
+    transform:scale(1.03);
+}
+
+/* QUOTE */
+.quote{
+    background:var(--gradient);
+    color:white;
+    padding:70px;
+    border-radius:20px;
+    text-align:center;
+    font-size:22px;
+    margin-top:80px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:30px;
+    letter-spacing:2px;
+}
+
+/* FADE */
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+    .hero h1{font-size:40px}
+    .timeline::after{left:20px}
+    .container{width:100%;padding-left:60px}
+    .container.right{left:0}
+}
+/* SPLIT LAYOUT */
+.split-layout{
+    display:flex;
+    gap:50px;
+    align-items: stretch; /*QUAN TRỌNG*/
+    max-width:1100px;
+    margin:auto;
+}
+.left-content{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+}
+
+.right-content{
+    flex:1;
+    display:flex;
+}
+
+.right-content video{
+    width:100%;
+    height:100%;   /* QUAN TRỌNG */
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* BOX */
+.box {
+  background: #ffffff;
+  border-radius: 23px;
+  padding: 30px;
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.12),
+    inset 0 0 0 2px #e5e7eb;
+}
+
+/* TEXT BOX */
+.text h2 {
+  margin-top: 0;
+  color: #0f172a;
+  position: relative;
+}
+.text h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #fcbf49;
+  display: block;
+  margin-top: 8px;
+}
+
+/* BOX NỔI BẬT */
+.text.highlight {
+  background: linear-gradient(135deg, #fff7e6, #fffbeb);
+  box-shadow:
+    0 20px 40px rgba(252,191,73,0.35),
+    inset 0 0 0 3px #fcbf49;
+}
+
+.text.accent {
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  box-shadow:
+    0 20px 40px rgba(56,189,248,0.35),
+    inset 0 0 0 3px #38bdf8;
+}
+
+/* ===== NÚT TRẮNG HIỆU ỨNG BÓNG ===== */
+
+.white-btn-wrapper{
+    margin-top:50px;
+    text-align:center;
+}
+
+.white-btn{
+    display:inline-block;
+    padding:18px 40px;
+    background:white;
+    color:#ff4d6d;
+    font-size:18px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Hover nổi lên */
+.white-btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.35);
+    background:#fff5f8;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+<div style="color:white;font-weight:800">12A4</div>
+<div>
+<a href="#cot1">Sinh nhật</a>
+<a href="#cot2">Tri ân</a>
+<a href="#cot3">Thăm tết</a>
+</div>
+</nav>
+<div class="hero">
+<div>
+<h1>Hành Trình Khép Lại 12A4</h1>
+<p>Cột mốc của sự trưởng thành và chia tay</p>
+</div>
+</div>
+
+<section id="cot1">
+<h2 class="section-title fade">🎉Sinh nhật nhiều kỉ niệm nhất🎉</h2>
+<div class="split-layout fade">
+    <!-- BÊN TRÁI -->
+    <div class="left-content">
+        <div class="box text highlight">
+            <h3>Lần cuối cùng nhau tổ chức sinh nhật cho GVCN</h3>
+            <p>Sinh nhật cô năm cuối cùng bên nhau trở nên đặc biệt hơn bao giờ hết.<br>
+Giữa những ngày ôn thi bận rộn, cả lớp vẫn cùng nhau chuẩn bị một bất ngờ nhỏ dành cho cô.<br>
+Khoảnh khắc quây quần hát chúc mừng hôm ấy giản dị nhưng ấm áp — một kỷ niệm đẹp của 12A4 trước khi chia xa. 💙</p>
+        </div>
+
+        <div class="content">  
+        <video controls>
+            <source src="cn12a4.mp4" type="video/mp4">
+        </video>
+        </div>
+    </div>
+    <!-- BÊN PHẢI -->
+    <div class="right-content">
+        <div class="content">
+        <img src="cn12a4.jpg"width="350" height="500">
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="cot2">
+<h2 class="section-header-box">Tri ân 20/11</h2>
+<div class="timeline fade">
+<div class="container left">
+<div class="content">
+<img src="trianlop12.jpg"width="320" height="300">
+</div>
+</div>
+</div>
+<div class="timeline fade">
+<div class="container right">
+<div class="content">
+<h3>Tri ân</h3>
+<p>20/11 năm cuối cấp không còn là một buổi lễ bình thường.<br>
+Đó là lần tri ân đặc biệt nhất của 12A4 — khi từng lời cảm ơn được nói ra bằng tất cả sự trưởng thành và biết ơn.<br>
+Những bó hoa trao đi, những cái cúi đầu thật sâu, những bài hát nói lên tiếng lòng…Khoảnh khắc ấy, chúng tôi hiểu rằng ba năm thanh xuân có cô đồng hành là điều may mắn nhất.</p>
+</div>
+</div>
+</div>
+<div class="timeline fade">
+<div class="container left">
+<div class="content">  
+<img src="trianlop12(1).jpg"width="320" height="400">
+</div>
+</div>
+</div>
+</section>
+
+<section id="cot3">
+<h2 class="section-title fade">💙Thăm tết thầy cô💙</h2>
+<div class="split-layout fade">
+    <!-- BÊN TRÁI -->
+    <div class="left-content">
+        <div class="box text highlight">
+           <h3> Thăm tết</h3>
+        <p>Những ngày cận Tết, cả lớp cùng nhau đến thăm và chúc Tết thầy cô.<br>
+Mang theo chút quà nhỏ và những lời chúc đầu năm, ai cũng háo hức và vui vẻ.<br>
+Khoảnh khắc ngồi lại trò chuyện, nghe thầy cô dặn dò cho năm cuối cấp, khiến chúng tôi cảm nhận rõ hơn sự gắn bó suốt ba năm thanh xuân. 💙</p>
+        </div>
+        <div class="content"> 
+        <div class="image-box">
+        <img src="thamtet.jpg"width="400" height="300">
+        </div>
+        </div>
+    </div>
+    <!-- BÊN PHẢI -->
+    <div class="right-content">
+        <div class="content"> 
+        <div class="image-box">
+        <img src="thamtet1.jpg"width="350" height="500">
+        </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<div class="white-btn-wrapper">
+    <a href="12A4 thân yêu của chúng tôi.html" class="white-btn">
+        🌸 Lớp học 12A4 Thân Yêu 🌸
+    </a>
+</div>
+
+<div class="quote fade">
+"Lớp 12 – năm của sự biết ơn, cố gắng và lưu giữ từng khoảnh khắc cuối cùng."
+</div>
+
+<footer><p class="footer-text">Ba năm gắn bó – Một đại gia đình – Vạn khoảnh khắc yêu thương</p></footer>
+
+<div id="lightbox" onclick="this.style.display='none'">
+<img src="">
+</div>
+<script>
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+const faders=document.querySelectorAll(".fade");
+window.addEventListener("scroll",()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add("show");
+}
+});
+});
+const images=document.querySelectorAll(".gallery img");
+const lightbox=document.getElementById("lightbox");
+const lightImg=lightbox.querySelector("img");
+images.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.style.display="flex";
+lightImg.src=img.src;
+});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 11A4 - Thanh Xuân Rực Rỡ</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap"rel="stylesheet">
+
+<style>
+:root{
+    --main-color:#9b59b6;
+    --gradient:linear-gradient(135deg,#8e44ad,#c39bd3);
+    --dark:#111;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f4f8;
+    color:#333;
+    scroll-behavior:smooth;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    padding:18px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.3);
+    transition:.4s;
+    z-index:1000;
+}
+
+nav.scrolled{
+    background:white;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    margin-left:25px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav.scrolled a{color:#333;}
+
+nav a:hover{color:var(--main-color);}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url("hd26th3lop10.jpg");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:70px;
+    background:var(--gradient);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:22px;
+    opacity:.9;
+}
+
+/* SECTION */
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+    text-align:center;
+    margin-bottom:60px;
+}
+
+/* TIMELINE */
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline::after{
+    content:'';
+    position:absolute;
+    width:4px;
+    background:var(--gradient);
+    top:0;
+    bottom:0;
+    left:50%;
+    margin-left:-2px;
+}
+
+.container{
+    padding:20px 40px;
+    position:relative;
+    width:50%;
+}
+
+.container::before{
+    content:'';
+    position:absolute;
+    width:20px;
+    height:20px;
+    right:-10px;
+    background:var(--main-color);
+    border-radius:50%;
+    top:30px;
+}
+
+.container.right::before{
+    left:-10px;
+}
+
+.container.left{left:0}
+.container.right{left:50%}
+
+.content{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    transition:.4s;
+}
+
+.content:hover{
+    transform:translateY(-5px);
+}
+
+/* CARD BOX */
+.card-box{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.gallery img, video{
+    width:100%;
+    border-radius:15px;
+    transition:.4s;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+.gallery img:hover, video:hover{
+    transform:scale(1.03);
+}
+
+/* QUOTE */
+.quote{
+    background:var(--gradient);
+    color:white;
+    padding:70px;
+    border-radius:20px;
+    text-align:center;
+    font-size:22px;
+    margin-top:80px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer{
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:30px;
+    letter-spacing:2px;
+}
+
+/* FADE */
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+    .hero h1{font-size:40px}
+    .timeline::after{left:20px}
+    .container{width:100%;padding-left:60px}
+    .container.right{left:0}
+}
+/* SPLIT LAYOUT */
+/* LAYOUT 1 - 2 */
+.layout-1-2{
+    display:grid;
+    grid-template-columns:1fr 2fr; /* 1 phần chữ - 2 phần ảnh */
+    gap:50px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.text-box{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.image-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.image-box img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:.4s;
+}
+
+.image-box img:hover{
+    transform:scale(1.03);
+}
+
+/* Mobile */
+@media(max-width:900px){
+    .layout-1-2{
+        grid-template-columns:1fr;
+    }
+
+    .image-box{
+        grid-template-columns:1fr;
+    }
+}
+
+/* BOX */
+.box {
+  background: #ffffff;
+  border-radius: 23px;
+  padding: 30px;
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.12),
+    inset 0 0 0 2px #e5e7eb;
+}
+
+/* TEXT BOX */
+.text h2 {
+  margin-top: 0;
+  color: #0f172a;
+  position: relative;
+}
+.text h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: #fcbf49;
+  display: block;
+  margin-top: 8px;
+}
+
+/* BOX NỔI BẬT */
+.text.highlight {
+  background: linear-gradient(135deg, #fff7e6, #fffbeb);
+  box-shadow:
+    0 20px 40px rgba(252,191,73,0.35),
+    inset 0 0 0 3px #fcbf49;
+}
+
+.text.accent {
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  box-shadow:
+    0 20px 40px rgba(56,189,248,0.35),
+    inset 0 0 0 3px #38bdf8;
+}
+
+/* ===== NÚT TRẮNG HIỆU ỨNG BÓNG ===== */
+
+.white-btn-wrapper{
+    margin-top:50px;
+    text-align:center;
+}
+
+.white-btn{
+    display:inline-block;
+    padding:18px 40px;
+    background:white;
+    color:#ff4d6d;
+    font-size:18px;
+    font-weight:600;
+    border-radius:50px;
+    text-decoration:none;
+    transition:0.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* Hover nổi lên */
+.white-btn:hover{
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.35);
+    background:#fff5f8;
+}
+.text-box{
+    margin-right:-30px;
+    position:relative;
+    z-index:2;
+}
+/* ===== LAYOUT RIÊNG CHO 20/11 ===== */
+
+.two-card-layout{
+    display:flex;
+    justify-content:center;   /* canh giữa cụm */
+    align-items:stretch;
+    gap:30px;
+    max-width:1000px;
+    margin:0 auto;
+}
+
+.card-left,
+.card-right{
+    flex:1;
+}
+
+/* chỉnh ảnh cho cân */
+.card-right img{
+    width:100%;
+    max-width:650px;
+    display:block;
+    margin:0 auto;
+}
+.card-right{
+    transform: translateX(40px);
+}
+/* ===== FIX RIÊNG CHO 20/11 ===== */
+
+#cot3 .image-box{
+    display:block;   /* bỏ grid */
+}
+
+#cot3 .image-box img{
+    width:100%;
+    max-width:800px;   /* tăng mạnh kích thước */
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+<div style="color:white;font-weight:800">11A4</div>
+<div>
+<a href="#cot1">Hội thao & Sinh nhật</a>
+<a href="#cot2">bất ngờ</a>
+<a href="#cot3">Tổng kết</a>
+</div>
+</nav>
+
+<div class="hero">
+<div>
+<h1>Thanh Xuân Rực Rỡ 11A4</h1>
+<p>Cột mốc của sự gắn kết</p>
+</div>
+</div>
+
+<section id="cot1">
+<h2 class="section-title fade">🎯 Hội thao & Sinh nhật</h2>
+
+<div class="layout-1-2 fade">
+
+    <!-- CỘT 1: NỘI DUNG -->
+    <div class="text-box">
+        <h3>Hội thao & Sinh nhật </h3>
+        <p>
+         Hội thao năm ấy diễn ra đúng vào ngày sinh nhật cô.<br>Sau những giờ thi đấu đầy nhiệt huyết và tiếng cổ vũ không ngớt, 11A4 lại bí mật chuẩn bị một bất ngờ nhỏ cho cô.<br>Giữa không khí sôi động của sân trường, cả lớp cùng hát chúc mừng, trao bánh và những lời chúc chân thành.<br>Niềm vui hôm đó không chỉ là những trận đấu hết mình, mà còn là khoảnh khắc cả lớp được nhìn thấy nụ cười hạnh phúc của cô giữa vòng tay học trò.💙
+        </p>
+    </div>
+
+    <!-- CỘT 2: HÌNH ẢNH -->
+    <div class="image-box">
+        <img src="hoithaolop11.jpg">
+        <img src="cn11a4.jpg">
+    </div>
+
+</div>
+</section>
+
+<section id="cot2">
+<h2 class="section-title fade">✨Những bất ngờ đầy yêu thương✨</h2>
+<div class="split-layout fade">
+
+        <div class="box text highlight">
+            <h3>20/10</h3>
+            <p>
+Ngày 20/10 năm ấy, lớp âm thầm chuẩn bị hoa và những lời chúc dành tặng các bạn nữ.<br>
+Không còn sự ngại ngùng như những ngày đầu, mọi thứ được chuẩn bị chu đáo và đầy bất ngờ.<br>
+Những nụ cười rạng rỡ, những khoảnh khắc vui vẻ trong lớp học khiến ngày hôm đó trở nên thật đặc biệt.
+            </p>
+        </div><br>
+         <div class="box text highlight">
+            <h3>19/11</h3>
+            <p>
+Đến lượt 19/11, các bạn nữ cũng bí mật chuẩn bị những món quà nhỏ và lời chúc dành cho các bạn nam.<br>Có thể không quá cầu kỳ, nhưng đầy ắp tiếng cười và sự hào hứng.<br> Khoảnh khắc trao quà, những lời trêu đùa quen thuộc khiến lớp học hôm ấy trở nên ấm áp hơn bao giờ hết. 
+            </p>
+        </div><br>
+</div>
+</section>
+
+<section id="cot3">
+<h2 class="section-title fade">🎯 Lễ tổng kết</h2>
+
+<div class="two-card-layout fade">
+
+    <!-- CỘT CHỮ -->
+    <div class="card-left">
+        <div class="text-box">
+            <h3>Nội dung</h3>
+            <p>
+            20/11 năm ấy, từng bó hoa nhỏ được trao tận tay, từng lời chúc được nói trong không gian ấm áp của gia đình.<br>
+            Khoảnh khắc ngồi lại trò chuyện, lắng nghe thầy cô chia sẻ, khiến chúng tôi cảm nhận rõ hơn sự gắn bó và yêu thương suốt ba năm đồng hành.💙
+            </p>
+        </div>
+    </div>
+
+    <!-- CỘT ẢNH -->
+    <div class="card-right">
+        <div class="image-box">
+            <img src="tongketlop11.jpg">
+        </div>
+    </div>
+
+</div>
+</section>
+
+<div class="white-btn-wrapper">
+    <a href="12A4 thân yêu của chúng tôi.html" class="white-btn">
+        🌸 Lớp học 12A4 Thân Yêu 🌸
+    </a>
+</div>
+
+<div class="quote fade">
+"Lớp 11 – năm của thanh xuân rực rỡ nhất, khi chúng tôi thực sự là một gia đình."
+</div>
+
+<footer>
+<p class="footer-text">Ba năm gắn bó – Một đại gia đình – Vạn khoảnh khắc yêu thương</p>
+</footer>
+
+<div id="lightbox" onclick="this.style.display='none'">
+<img src="">
+</div>
+
+<script>
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+
+const faders=document.querySelectorAll(".fade");
+window.addEventListener("scroll",()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add("show");
+}
+});
+});
+
+const images=document.querySelectorAll(".gallery img");
+const lightbox=document.getElementById("lightbox");
+const lightImg=lightbox.querySelector("img");
+
+images.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.style.display="flex";
+lightImg.src=img.src;
+});
+});
+</script>
+
+</body>
+</html>
